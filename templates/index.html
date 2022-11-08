@@ -8,6 +8,16 @@
   Subtitel
 </h2>
 
+    <form action="/" method="POST">
+      {% for field in inputfields %}
+          <div class="input_field">
+              <label for={{field[0]}}>{{field[1]}}</label>
+              <input type="text" name={{field[0]}} id={{field[0]}}>
+          </div>
+      {% endfor %}
+
+      <button name="submit" type="submit">Submit</button>
+      <button name="reset" type="reset">Abbrechen</button>
 
 
 {% endblock %}
