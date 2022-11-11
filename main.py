@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from __init__ import create_app
 import joblib
 
@@ -6,11 +6,11 @@ main = Blueprint('main', __name__)
 
 # TODO
 # Eingabefelder eintragen
-fields = ['Field 1', 'Field 2', 'Field 3', 'Field 4']
+fields = [['anz', 'Anzahl Beschädigungen'], ['tiefe', 'Durchschnittl. Tiefe in mm']]
+
 # TODO
 # Name des Modells festlegen
 model_file='model.dt'
-fields = [['anz', 'Anzahl Beschädigungen'], ['tiefe', 'Durchschnittl. Tiefe in mm']]
 
 @main.route('/')
 def index_get():
@@ -25,17 +25,19 @@ def index_post():
 
     # TODO
     # Daten aus Form Request laden, evtl. konvertieren
-
+    input_values = []
+    for input in fields:
+        if input[0] in request.form.keys():
+            input_values.add( float( request.form.get(input[0]))
     # TODO
     # Model mit Daten aufrufen
-    model.predict()
+    result = model.predict(input_values)
 
     # TODO
     # Ergebnis für Ausgabe vorbereiten
-    # result = ...
+    # result = result ...
 
     return render_template('index.html', inputfields = fields, result = result)
-    return render_template('index.html', inputfields = fields)
 
 if __name__ == '__main__':
     create_app().run(debug=True)

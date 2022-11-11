@@ -5,15 +5,13 @@
   HSS Simple WebGUI for KI Applikations
 </h1>
 <h2 class="subtitle">
-  Subtitel
+  Please enter
 </h2>
 
-    <form action="/" method="POST">
+    <form class="input_form" action="/" method="POST">
       {% for field in inputfields %}
-          <div class="input_field">
-              <label for={{field[0]}}>{{field[1]}}</label>
-              <input type="text" name={{field[0]}} id={{field[0]}}>
-          </div>
+          <label class="input_label" for={{field[0]}}>{{field[1]}}</label>
+          <input class="input_field" type="text" name={{field[0]}} id={{field[0]}}>
       {% endfor %}
 
       <button name="submit" type="submit">Submit</button>
