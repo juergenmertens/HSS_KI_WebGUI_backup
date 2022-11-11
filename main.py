@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request
 from __init__ import create_app
+from sklearn import tree
 import joblib
 
 main = Blueprint('main', __name__)
@@ -10,7 +11,7 @@ fields = [['anz', 'Anzahl Beschädigungen'], ['tiefe', 'Durchschnittl. Tiefe in 
 
 # TODO
 # Name des Modells festlegen
-model_file='model.dt'
+model_file='qm_model.dt'
 
 @main.route('/')
 def index_get():
@@ -28,14 +29,18 @@ def index_post():
     input_values = []
     for input in fields:
         if input[0] in request.form.keys():
-            input_values.add( float( request.form.get(input[0]))
+            input_values.append( float( request.form.get(input[0])))
     # TODO
     # Model mit Daten aufrufen
-    result = model.predict(input_values)
+    result = model.predict([input_values])
 
     # TODO
     # Ergebnis für Ausgabe vorbereiten
     # result = result ...
+    if result == 'N':
+        result = "Nacharbeit"
+    else:
+        result = "Ausschuss"
 
     return render_template('index.html', inputfields = fields, result = result)
 

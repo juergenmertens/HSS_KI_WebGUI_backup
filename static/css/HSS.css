@@ -1,36 +1,86 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 html {
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif, BlinkMacSystemFont, -apple-system;
+    min-width: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-rendering: optimizeLegibility;
     max-width:70%;
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    flex-flow: row wrap;
-    justify-content:center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    -webkit-box-pack:center;
+        -ms-flex-pack:center;
+            justify-content:center;
 }
 
 body {
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    flex-flow: row wrap;
-    justify-content:center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    -webkit-box-pack:center;
+        -ms-flex-pack:center;
+            justify-content:center;
 }
 
 .header {
-    flex: 1 1 100%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
 }
 
 .hss-body {
-    flex: 1 1 100%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
 }
 
 .input_form {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 1fr 1em 1fr 1em 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1em;
 }
 
 .input_label {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
     grid-column: 1/2;
 }
 
 .input_field {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
     grid-column: 2/4;
+}
+
+.result_field{
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    grid-column: 1/4
+}
+
+textarea {
+    width: 100%;
+    font-size: 1.5em;
+    display:block;
+    text-align: center;
+    line-height: 4em;
 }
 
 button {

@@ -2,20 +2,24 @@
 
 {% block content %}
 <h1 class="title">
-  HSS Simple WebGUI for KI Applikations
+  Simple WebGUI for KI Applications
 </h1>
 <h2 class="subtitle">
   Please enter
 </h2>
 
     <form class="input_form" action="/" method="POST">
-      {% for field in inputfields %}
-          <label class="input_label" for={{field[0]}}>{{field[1]}}</label>
-          <input class="input_field" type="text" name={{field[0]}} id={{field[0]}}>
-      {% endfor %}
+        {% for field in inputfields %}
+            <label class="input_label" for={{field[0]}}>{{field[1]}}</label>
+            <input class="input_field" type="text" name={{field[0]}} id={{field[0]}}>
+        {% endfor %}
 
-      <button name="submit" type="submit">Submit</button>
-      <button name="reset" type="reset">Abbrechen</button>
+        <button name="submit" type="submit">Submit</button>
+        <button name="reset" type="reset">Abbrechen</button>
+    </form>
 
+    <div class="result_field">
+        <textarea name="result" rows="1" >{{result}}</textarea>
+    </div>
 
 {% endblock %}
