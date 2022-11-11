@@ -1,0 +1,38 @@
+html {
+    max-width:70%;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content:center;
+}
+
+body {
+    display:flex;
+    flex-flow: row wrap;
+    justify-content:center;
+}
+
+.header {
+    flex: 1 1 100%;
+}
+
+.hss-body {
+    flex: 1 1 100%;
+}
+
+.input_form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1em;
+}
+
+.input_label {
+    grid-column: 1/2;
+}
+
+.input_field {
+    grid-column: 2/4;
+}
+
+button {
+    margin: 2em;
+}
