@@ -6,7 +6,7 @@ import joblib
 main = Blueprint('main', __name__)
 
 # TODO
-# Eingabefelder eintragen
+# Eingabefelder eintragen [Feldname, Anzeigetext]
 fields = [['anz', 'Anzahl Beschädigungen'], ['tiefe', 'Durchschnittl. Tiefe in mm']]
 
 # TODO
@@ -21,10 +21,6 @@ def index_get():
 def index_post():
 
     # TODO
-    # Model laden
-    model = joblib.load(model_file)
-
-    # TODO
     # Daten aus Form Request laden, evtl. konvertieren
     input_values = []
     for input in fields:
@@ -32,6 +28,7 @@ def index_post():
             input_values.append( float( request.form.get(input[0])))
     # TODO
     # Model mit Daten aufrufen
+    model = joblib.load(model_file)
     result = model.predict([input_values])
 
     # TODO
