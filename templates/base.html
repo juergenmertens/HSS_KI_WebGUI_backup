@@ -10,9 +10,17 @@
 </head>
 
 <body>
-        <header class="header">
-            <img src="static/HSS Logo.png" class="logo" height='50px' >
-        </header>
+ <header class="header">
+    <img src="static/HSS Logo.png" class="navlogo" height='50px'>
+    <input class="menu-btn" type="checkbox" id="menu-btn"/>
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+        <li><a href="{{ url_for('main.index_get') }}" class="navbar-item">Home</a></li>
+        <li><a href="{{ url_for('textki.text_get') }}" class="navbar-item">Text-KI</a></li>
+        <li><a href="{{ url_for('pictureki.picture_get') }}" class="navbar-item">Bild-KI</a></li>
+    </ul>
+
+</header>
 
         <div class="hss-body">
                {% block content %}
