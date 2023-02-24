@@ -207,6 +207,17 @@ body {
             flex: 1 1 100%;
 }
 
+#src_image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.image {
+    width: 50%;
+    border: solid;
+}
+
 .input_form {
     display: -ms-grid;
     display: grid;
