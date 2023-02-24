@@ -12,12 +12,12 @@ model_file = 'qm_model.dt'
 textki = Blueprint('textki', __name__)
 
 
-@textki.route('/', methods=['GET'])
+@textki.route('/text', methods=['GET'])
 def text_get():
     return render_template('text.html', inputfields=fields)
 
 
-@textki.route('/', methods=['POST'])
+@textki.route('/text', methods=['POST'])
 def text_post():
     # TODO
     # Daten aus Form Request laden, evtl. konvertieren

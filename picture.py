@@ -15,16 +15,21 @@ def upload():
     filename = ''
     if file:
         filename = secure_filename(file.filename)
-        file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+        filename = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+        file.save(filename)
         session['filename'] = filename
-    return render_template('index.html', filename=filename)
+    return render_template('picture.html', image=filename)
 
 
 @pictureki.post('/predict')
 def predict():
     if 'filename' in session:
-        print(session['filename'])
+        filename = session['filename']
+        session.pop('filename', None)
 
-    session.pop('filename', None)
+    result = predict(filename)
 
-    return render_template('index.html')
+    return render_template('picture.html', result=result)
+
+def predict(filename):
+    pass
