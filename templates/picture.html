@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Simple WebGUI for KI Applications
+</h1>
+<h2 class="subtitle">
+  Please upload image
+</h2>
+
+   <div class="content_area">
+    <div class="input_area">
+        <form action="upload" id="frm_picture" enctype="multipart/form-data" method="POST">
+            <div class="image">
+                <img id="src_image" src="{{image}}">
+            </div>
+            <input name="file" form='frm_picture' type="file" size="50" accept="image/*">
+            <button name="submit" form='frm_picture' type="submit">Upload</button>
+        </form>
+    </div>
+
+
+    <div class="cmd_area">
+        <form action="predict">
+            <button name="submit" type="submit" formmethod="post">Predict</button>
+        </form>
+    </div>
+
+    <div class="result_area">
+        <textarea name="result" rows="1">{{result}}</textarea>
+    </div>
+
+</div>
+
+{% endblock %}
