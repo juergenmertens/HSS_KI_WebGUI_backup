@@ -2,22 +2,21 @@ import os
 
 import matplotlib.pyplot as plt
 import numpy as np
-from PIL import Image
 from flask import Blueprint, render_template, request, current_app, session
 from tensorflow import keras
 from werkzeug.utils import secure_filename
 
 from image_helper import load_image_as_grayscale, process_image
 
-pictureki = Blueprint('pictureki', __name__)
+imageki = Blueprint('imageki', __name__)
 
 
-@pictureki.get('/picture')
+@imageki.get('/picture')
 def picture_get():
-    return render_template('picture.html')
+    return render_template('image.html')
 
 
-@pictureki.post('/upload')
+@imageki.post('/upload')
 def upload():
     file = request.files['file']
     filename = ''
@@ -26,27 +25,25 @@ def upload():
         filename = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
         file.save(filename)
         session['filename'] = filename
-    return render_template('picture.html', image=filename)
+        return predict()
+    else:
+        render_template('image.html')
 
 
-@pictureki.post('/predict')
 def predict():
     filename = ''
     if 'filename' in session:
         filename = session['filename']
-        result = prediction(filename)
+        results = prediction(filename)
         session.pop('filename', None)
     else:
         result = "No valid image!"
 
-    return render_template('picture.html', image=filename, result=result)
+    return render_template('image.html', image=filename, results=results)
 
 
 def prediction(image_path):
     image = load_image_as_grayscale(image_path)
-
-    # plt.imshow(image, cmap='Greys')
-    # plt.show()
 
     image = process_image(image)
     image.save(image_path)
@@ -59,8 +56,8 @@ def prediction(image_path):
     img = img.reshape((1, image_size))
     result = model.predict(img)
 
-    result_str=''
+    results = []
     for i in range(10):
-        result_str += ("{0}: {1:5.2f} %\n".format(i, result[0][i] * 100))
+        results.append("{0}: {1:5.2f} %\n".format(i, result[0][i] * 100))
 
-    return result_str
+    return results

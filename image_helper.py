@@ -3,7 +3,8 @@ from PIL import Image
 
 CONTENT_SIZE = 20, 20
 FINAL_SIZE = 28, 28
-TRESHOLD = 200
+TRESHOLD = 240
+
 
 def load_image_as_grayscale(image_path):
     return Image.open(image_path).convert('L')
@@ -66,6 +67,7 @@ def find_border(img_as_array):
             break
 
     return x, y, w, h
+
 
 def find_center(img):
     image_as_array = 255 - np.asarray(img, np.uint8)

@@ -8,7 +8,7 @@
   Please enter data
 </h2>
 
-    <form class="input_form" action="/" method="POST">
+    <form class="input_form" action="/text" method="POST">
         {% for field in inputfields %}
             <label class="input_label" for={{field[0]}}>{{field[1]}}</label>
             <input class="input_field" type="text" name={{field[0]}} id={{field[0]}}>

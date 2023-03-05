@@ -13,7 +13,7 @@ def create_app():
     from text import textki as textki_blueprint
     app.register_blueprint(textki_blueprint)
 
-    from picture import pictureki as pictureki_blueprint
-    app.register_blueprint(pictureki_blueprint)
+    from image import imageki as imageki_blueprint
+    app.register_blueprint(imageki_blueprint)
 
     return app

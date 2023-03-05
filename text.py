@@ -2,8 +2,8 @@ import joblib
 from flask import Blueprint, render_template, request
 
 # TODO
-# Eingabefelder eintragen [Feldname, Anzeigetext]
-fields = [['anz', 'Anzahl Beschädigungen'], ['tiefe', 'Durchschnittl. Tiefe in mm']]
+# Eingabefelder eintragen [Feldname, Labeltext]
+fields = [['field1', 'Labeltext1'], ['field2', 'Labeltext2']]
 
 # TODO
 # Name des Modells festlegen
@@ -21,6 +21,7 @@ def text_get():
 def text_post():
     # TODO
     # Daten aus Form Request laden, evtl. konvertieren
+    # Ergebnis ins Array input_values
     input_values = []
     for input_field in fields:
         if input_field[0] in request.form.keys():
@@ -38,4 +39,4 @@ def text_post():
     else:
         result = "Ausschuss"
 
-    return render_template('index.html', inputfields=fields, result=result)
+    return render_template('text.html', inputfields=fields, result=result)
