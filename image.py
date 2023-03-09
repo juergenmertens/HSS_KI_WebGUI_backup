@@ -58,12 +58,19 @@ def prediction(image_path):
     # Bild speichern, weitere Verwendung unklar
     image.save(image_path)
 
-    # ToDo: Modell laden
+    # ToDo: Modell laden.
+    # Funktion keras.models.load_model()
 
     # ToDo: Numpy array mit Image vorbereiten
+    # siehe jupyter-notebook
 
     # ToDo: predict
+    # siehe jupyter-notebook
 
     # ToDo: Resultate besser lesbar gestalten
+    # Schleife über results und formatieren als
+    # Prozentzahl mit je 2 Nachkommastellen
 
+    # results sollte ein Array mit 10 Strings sein.
+    # results wird auf der Seite dargestellt
     return results
