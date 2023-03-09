@@ -48,6 +48,12 @@ def prediction(image_path):
     image = process_image(image)
     image.save(image_path)
 
+    # ToDo: Modell laden
 
+    # ToDo: Numpy array mit Image vorbereiten
+
+    #ToDo: predict
+
+    #ToDo: Resultate besser lesbar gestalten
 
     return results
