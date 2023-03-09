@@ -43,17 +43,27 @@ def predict():
 
 
 def prediction(image_path):
+
+    # Bild laden
     image = load_image_as_grayscale(image_path)
 
+    # process_image() bearbeitet das Bild nach den MNIST Vorgaben
+    # - Ein freier Rand im Bild wird entfernt
+    # - Das Bild wird auf 20x20 skaliert
+    # - Der Schwerpunkt der Pixel wird ermittelt
+    # - Das Bild wird in ein 28x28 Bild eingefügt, so dass
+    #   der Schwerpunkt in der Mitte liegt
     image = process_image(image)
+
+    # Bild speichern, weitere Verwendung unklar
     image.save(image_path)
 
     # ToDo: Modell laden
 
     # ToDo: Numpy array mit Image vorbereiten
 
-    #ToDo: predict
+    # ToDo: predict
 
-    #ToDo: Resultate besser lesbar gestalten
+    # ToDo: Resultate besser lesbar gestalten
 
     return results
