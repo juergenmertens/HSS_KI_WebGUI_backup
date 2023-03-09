@@ -48,16 +48,6 @@ def prediction(image_path):
     image = process_image(image)
     image.save(image_path)
 
-    model = keras.models.load_model('ziffern.model')
-    image_size = 28 * 28
-    img = np.asarray(image).astype('float32')
-    img = (255 - img)
-    img = img / np.amax(img)
-    img = img.reshape((1, image_size))
-    result = model.predict(img)
 
-    results = []
-    for i in range(10):
-        results.append("{0}: {1:5.2f} %\n".format(i, result[0][i] * 100))
 
     return results
